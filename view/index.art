@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/bookManager/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>欢迎来到图书管理系统</header>
+    <table>
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>作者</th>
+                <th>分类</th>
+                <th>概要</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{each data}}
+            <tr>
+                <td>{{$value.id}}</td>
+                <td>{{$value.name}}</td>
+                <td>{{$value.author}}</td>
+                <td>{{$value.classify}}</td>
+                <td>{{$value.content}}</td>
+                <td><a href="/toedit?id={{$value.id}}">编辑</a> <a href="/todele?id={{$value.id}}">删除</a></td>
+            </tr>
+        {{/each}}
+            
+        </tbody>
+    </table>
+    <footer><a href="/addbook">添加</a></footer>
+</body>
+</html>

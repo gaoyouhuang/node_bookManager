@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/bookManager/index.css">
+    <title>Document</title> 
+</head>
+<body>
+    <header>修改图书信息</header>
+    <form action="/addbookfinish" method="post">
+        名称:<input type="text" name="name" ><br>
+        作者:<input type="text" name="author"><br>
+        分类:<input type="text" name="classify"><br>
+        概要:<input type="text" name="content"><br>
+        <input type="submit" value="保存">
+    </form>
+</body>
+</html>

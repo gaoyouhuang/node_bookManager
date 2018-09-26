@@ -17,4 +17,4 @@ app.use(router);
 
 app.listen(3000,()=>{
     console.log("app is running!!");
-})//no clone 哈哈哈
+})//no clone 哈哈哈 ok

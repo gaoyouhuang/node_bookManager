@@ -1,0 +1,246 @@
+
+1508911638
+Error 
+2017.9.12
+Error:Execution failed for task ':mhjnetprotocol:compileReleaseNdk'.
+> Error: Your project contains C++ files but it is not using a supported native build system.
+  Consider using CMake or ndk-build integration with the stable Android Gradle plugin:
+   https://developer.android.com/studio/projects/add-native-code.html
+  or use the experimental plugin:
+   https://developer.android.com/studio/build/experimental-plugin.html.
+
+首先在工程目录下的gradle.properties文件的末尾加上一句：Android.useDeprecatedNdk=true 
+
+然后再在文件build.gradle(Module:app)里面的buildTypes类中添加一个这样的方法
+
+sourceSets {
+    main {
+        jni.srcDirs = []
+    }
+}
+
+react-native bundle --platform android --dev false --entry-file App.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
+
+两次正确　显示无法操控　保存之后一样　显示无法操控
+
+更新deepin
+sudo apt-get update && sudo apt-get dist-upgrade -y
+
+权限问题　您不是所有者......
+
+ls -l  查看当前文件夹下　文件的权限
+ls -l xxx　查看制定文件的权限　
+
+chown (-R) yangzongde testfile  -x
+  chown [用户] [文件名]　 -R　是修改文件夹下所有的文件　　　修改该文件拥有者　
+chmod -R 777 main/res/　所有者权限修改为读写
+react-native log-android //日志
+adb shell input keyevent 82　//弹出debug弹框
+adb start-server 开启服务
+adb kill-server　杀死服务
+ps aux|grep adb　查看adb开起了几个
+echo $ANDROID_HOME　查看路径
+export ANDROID_HOME=/home/scs/android/SDK　设置路径
+export PATH=$PATH:/home/scs/android/SDK/platform-tools　添加path路径
+whereis adb
+sudo rm /usr/bin/adb
+
+./ 当前目录
+../ 父级目录
+/ 根目录
+
+计划
+1.内存泄露，以及优化方式  详（DataBindingDemo--->Main3Activity） (OK)
+2.学习，熟练运用DataBinding 详（DataBindingDemo） （全部知识点，看完，运用不够熟练）(OK)
+3.View的绘制（深入了解）{DataBindingDemo -->{MyTextView CustomLayout}}(OK)
+4.View的事件分发（深入了解）(OK)
+5.View动画（深入了解）
+6.四大组件的启动过程源码（深入了解）
+7.四大组件的使用（熟练运用）
+8.布局优化 (OK)
+	1.少嵌套　2.用ConstraintLayout约束布局　3.少用相对布局，因为要绘制两边
+	4.线性布局　使用权重也要绘制两边
+9.Activity Fragment个个生命周期的意义
+10.java基础  （反射一定要看）
+11.Loader MVP的使用 详（DataBindingDemo ---->Main4Activity）(OK)
+12.设置背景颜色　几种set方法　(OK)
+        1.view.setBackgroundResource(R.color.colorPrimary);
+        2.view.setBackgroundColor(Color.parseColor("#000000"));
+        3.view.setBackground(getActivity().getResources().getDrawable(R.drawable.leak_canary_icon));
+        4.Drawable drawable =getActivity().getResources().getDrawable(R.drawable.leak_canary_icon);
+        view.setBackground(drawable);
+13.grald开发
+14.ConstraintLayout    (ok)
+	md风格
+15.xml解析　(ok)
+16.5.0 6.0 7.0 8.0 9.0 特性
+17.rn 前端ui
+18.sqlite　(DataBindingDemo ---->SqliteActivity)(OK)　 
+	webview　 (DataBindingDemo ---->WebViewActivity)(OK) 
+19.RXJAVA+Retrofit+Okhttp+Mvp (RxRetrofitMvp)　(OK)
+20.性能调试方法
+21.沉浸式状态栏　颜色
+22.http://lib.csdn.net/article/android/54459   DecorView层级 (ok)
+23.事件分发　https://blog.csdn.net/mynameishuangshuai/article/details/52900723 (ok)
+24.handler looper message (ok)
+
+git 常用操作指令
+git config --global user.name "xxxx"　设置git用户名
+git config --global user.email "xxx"　设置git　邮箱
+ssh-keygen  -t rsa –C “youremail@example.com”　生产SSH,使用github远程仓库需要用到
+mkdir xxxx  创建文件夹
+touch xxxx 创建文件
+git init 　初始化文件夹
+git add -A　　将全部文件添加到缓存区
+git add xxxx　　将指定文件添加到缓存区
+git commit -m xxx　　提交（将缓冲区与当前分支相合并）
+git commit -am "version1"
+git log　查看操作日志
+git log --oneline 单行显示日志
+git status 　查看当前文件夹下所有文件状态（未提交　修改未提交。。。）
+git diff xxx　　查看指定文件的修改状态
+git reflog  查看每一次切换版本的记录
+git reset --hard xxxx　　跳转到指定的版本号
+git reset --hard HEAD~0 最近的第一个版本
+git branch 　查看分支
+git branch xxx　创建分支
+git checkout xxx　切换分支
+git checkout -b xx　创建且切换分支
+git checkout xxx(指的是文件)　回复操作，在还没commit之前的操作
+git merge xxx　　合并某分支到当前分支
+git branch –d xxx　　删除分支
+git remote add origin https://github.com/tugenhua0707/testgit.git　　连接远程仓库
+git push 远程地址 分支名 //将本地仓库推送并连接远程的服务器
+git push origin test:master         // 提交本地test分支 作为 远程的master分支
+git push origin test:test              // 提交本地test分支作为远程的test分支
+git push -u origin master 将本地仓库的信息同步到远程　有时候需要master前面添加 +　表示强制同步 
+	master　表示要远程同步的分支名　　如想同步tag分支，就填写tag
+git push origin master 将master更新新到远程仓库
+删除远程分支  
+git branch -r -d origin/branch-name
+git push origin :branch-name 
+git remote remove br-name
+
+git remote 查看远程库的信息
+git remote -v　查看远程库的详细信息
+git clone https://github.com/tugenhua0707/testgit.git下载远程仓库（克隆）
+	git clone　-o zhujiming https://github.com/tugenhua0707/testgit.git 自定义主机名
+git remote show <主机名>
+git pull origin tag:tag2  
+	origin远程主机 tag远程主机下的分支 tag2要从远程同步到该分支 (把远程想要的分支同步到指定的本地分支下)
+git pull[remote] [branch]:分支　　取回远程仓库的变化，并与本地分支合并　:后面可以省略
+
+
+((430+914)-x)/(8/4)=520 x=304
+
+ registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+//            int mForegroundActivities=0;
+
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+                //app回到前台
+                if (!MHJMqttServerTask.getShared(instance).isConnect()) {
+                   final Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                            @Override
+                             public void run() {
+                                if(!MHJMqttServerTask.getShared(instance).isConnect()
+                                    && !TextUtils.isEmpty(DemoHelper.getInstance().getCurrentUserName())){
+                                    MHJMqttServerTask.getShared(instance).startConnect();
+                                }else {
+                                    this.cancel();
+                                    timer.cancel();
+                                }
+                            }
+                        },0,1000*5);//每隔30秒检测一次
+                }
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+                Log.i(TAG, "onActivityPaused: ");
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+                Log.i(TAG, "onActivityStopped: ");
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+
+            }
+        });
+
+
+ /**
+     * 滑动到指定位置
+     *
+     * @param mRecyclerView
+     * @param position
+     */
+    private void smoothMoveToPosition(RecyclerView mRecyclerView, final int position) {
+        // 第一个可见位置
+        int firstItem = mRecyclerView.getChildLayoutPosition(mRecyclerView.getChildAt(0));
+        // 最后一个可见位置
+        int lastItem = mRecyclerView.getChildLayoutPosition(mRecyclerView.getChildAt(mRecyclerView.getChildCount() - 1));
+
+        if (position < firstItem) {
+            // 如果跳转位置在第一个可见位置之前，就smoothScrollToPosition可以直接跳转
+            mRecyclerView.smoothScrollToPosition(position);
+        } else if (position <= lastItem) {
+            // 跳转位置在第一个可见项之后，最后一个可见项之前
+            // smoothScrollToPosition根本不会动，此时调用smoothScrollBy来滑动到指定位置
+//            int movePosition = position - firstItem;
+//            if (movePosition >= 0 && movePosition < mRecyclerView.getChildCount()) {
+//                int top = mRecyclerView.getChildAt(movePosition).getTop();
+//                mRecyclerView.smoothScrollBy(top, 0);
+//            }
+            int movePosition = (position - firstItem) / 2;
+            if (movePosition >= 0 && movePosition < mRecyclerView.getChildCount()) {
+                int Right = mRecyclerView.getChildAt(movePosition).getRight();
+                mRecyclerView.smoothScrollBy(Right, 0);
+            }
+        } else {
+            // 如果要跳转的位置在最后可见项之后，则先调用smoothScrollToPosition将要跳转的位置滚动到可见位置
+            // 再通过onScrollStateChanged控制再次调用smoothMoveToPosition，执行上一个判断中的方法
+            mRecyclerView.smoothScrollToPosition(position);
+        }
+    }
+
+LinearLayout 和 RelativeLayout的 性能区别
+当LinearLayout的子View 没有使用Weight属性的时候，onMeasere方法只调用一次，反之则调用两次
+RelativeLayout onMeasure 方法都会调用两次 水平调用一次 竖直调用一次
+
+
+https://www.jianshu.com/p/e740196225a4　　gson
+https://www.jianshu.com/p/308f3c54abdd retrofit
+http://blog.csdn.net/carson_ho/article/details/73732076  retrofit
+https://www.jianshu.com/p/dad51f6c9c4d?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation   大全
+
+
+linux 
+netstat -tln | grep 8083 查看是否被占用
+lsof -i :8083 查看占用的id
+kill -9 进程id 杀死id 
+
+export MAVEN_HOME=/home/scs/maven/apache-maven-3.5.4
+export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
+
+
+

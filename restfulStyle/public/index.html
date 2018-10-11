@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="/restfulbook/css/index.css">
     <title>Document</title>
-    <script type="text/javascript" src="/restfulStyle/js/jquery.js"></script>
-    <script type="text/javascript" src="/restfulStyle/js/dialog.js"></script>
-    <script type="text/javascript" src="/restfulStyle/js/template-web.js"></script>
-    <script type="text/javascript" src="/restfulStyle/js/index.js"></script>
+    <script type="text/javascript" src="/restfulbook/js/jquery.js"></script>
+    <script type="text/javascript" src="/restfulbook/js/dialog.js"></script>
+    <script type="text/javascript" src="/restfulbook/js/template-web.js"></script>
+    <script type="text/javascript" src="/restfulbook/js/index.js"></script>
     <script type="text/template" id="bookTemplate">
        {{each data}}
             <tr>
@@ -18,7 +18,7 @@
                 <td>{{$value.author}}</td>
                 <td>{{$value.classify}}</td>
                 <td>{{$value.content}}</td>
-                <td><a href="/toedit?id={{$value.id}}">编辑</a> <a href="/todele?id={{$value.id}}">删除</a></td>
+                <td><a href="#">编辑</a> <a href="#">删除</a></td>
             </tr>
         {{/each}}
     </script>

@@ -10,7 +10,7 @@ router.get("/books",service.showMain);
 // router.get("/toedit",service.toedit);
 // router.post("/editfinish",service.editfinish);
 //删除
-// router.get("/todele",service.todele);
+router.delete("/books/:id",service.todele);
 //添加
 // router.get("/addbook",service.addbook);
 // router.post("/addbookfinish",service.addbookfinish);

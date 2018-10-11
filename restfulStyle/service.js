@@ -35,17 +35,18 @@ exports.editfinish = (req,res)=>{
        });
 }
 exports.todele = (req,res)=>{
-    let id = req.query.id;
-    let sql = "delete from book where id=?";
-    let data = [id];
-    dbsql.sqlcontrol(sql,data,(resules)=>{
-        console.log("todele",resules);
-        if(resules.affectedRows<=0){
-            res.send("服务器异常");
-            return ;
-        }
-        res.redirect("/");
-    })
+    console.log(req);
+    // let id = req.query.id;
+    // let sql = "delete from book where id=?";
+    // let data = [id];
+    // dbsql.sqlcontrol(sql,data,(resules)=>{
+    //     console.log("todele",resules);
+    //     if(resules.affectedRows<=0){
+    //         res.send("服务器异常");
+    //         return ;
+    //     }
+    //     res.redirect("/");
+    // })
 }
 exports.addbook = (req,res)=>{
     res.render("addbook");

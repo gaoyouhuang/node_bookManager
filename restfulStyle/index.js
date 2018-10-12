@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use("/bookManager",express.static(__dirname+"/public"));
+app.use("/restfulbook",express.static("public"));
 app.use(router);
 
 app.listen(3000,()=>{

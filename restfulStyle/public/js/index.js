@@ -25,14 +25,72 @@ $(function () {
                                 type:"delete",
                                 url:"/books/"+id,
                                 success:function(data){
-                                    // getBookList();
+                                    console.log(data);
+                                    if(data.success){
+                                        showSuccess("删除成功");
+                                    }else{
+                                        showFail();
+                                    }
+                                }
+                            });
+                        });
+                        lastTd.find("a:eq(0)").click(()=>{
+                            $.ajax({
+                                dataType:"json",
+                                type:"get",
+                                url:"/books/book/"+id,
+                                success:(data)=>{
+                                    console.log(data);
+                                    let div = $("<div></div>");
+                                    let bookTemplate =$( template("bookAdd",{editdata:data[0]}));
+                                    bookTemplate.find("input[type=submit]").unbind("click").click(()=>{
+                                        $.ajax({
+                                            dataType:"json",
+                                            type:"put",
+                                            url:"/books/book",
+                                            data:bookTemplate.serialize(),
+                                            success:(data)=>{
+                                                console.log("修改");
+                                                if(data.success){
+                                                    showSuccess("修改成功");
+                                                }else{
+                                                    showFail();
+                                                }
+                                            }
+                                        });
+                                    });
+                                    div.append(bookTemplate);
+                                    let dialog = new MarkBox(300,200,"修改",div.get(0));
+                                    dialog.init();
+                                    
                                 }
                             });
                         });
                     })
                 }
             });
+        $("footer").find("a").click(()=>{
+            
+        })    
     }
+    let showSuccess  = (msg)=>{
+        // let div = $("<div></div>");
+        // let p = $("<p></p>").text(msg);
+        // div.append(p);
+        // let popup = new MarkBox(300,200,"提示",div.get(0));
+        // popup.init();
+        getBookList();
 
+    }
+    let showFail = ()=>{
+        let div = $("<div></div>");
+        let p = $("<p></p>").text("操作失败");
+        div.append(p);
+        let popup = new MarkBox(300,200,"提示",div.get(0));
+        popup.init();
+    }
+    let showUpdate = ()=>{
+
+    }
     getBookList();
   })

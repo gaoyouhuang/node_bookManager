@@ -8,8 +8,8 @@ const router = express.Router();
 router.get("/books",service.showMain);
 
 //修改
-// router.get("/toedit",service.toedit);
-// router.post("/editfinish",service.editfinish);
+router.get("/books/book/:id",service.toedit);
+router.put("/books/book",service.editfinish);
 //删除
 router.delete("/books/:id",service.todele);
 //添加

@@ -50,21 +50,20 @@ exports.todele = (req,res)=>{
     })
 }
 exports.addbook = (req,res)=>{
-    res.render("addbook");
-}
-exports.addbookfinish = (req,res)=>{
-    let adddata = {};
+    let sql = "insert into book set?";
+    let addData = {};
     for(let key in req.body){
-        adddata[key] = req.body[key];
+        addData[key] = req.body[key];
     }
-    let sql = "insert into book set ?";
-    dbsql.sqlcontrol(sql,adddata,(resules)=>{
-        console.log("addbookfinish",resules);
+    dbsql.sqlcontrol(sql,addData,(resules)=>{
+        console.log("addbook",resules);
         if(resules.affectedRows<=0){
-            res.send("服务器异常");
+            res.json({"success":false});
             return ;
+        }else{
+            res.json({"success":true});
+            return;
         }
-        res.redirect("/");
     })
 }
  

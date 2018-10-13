@@ -70,7 +70,28 @@ $(function () {
                 }
             });
         $("footer").find("a").click(()=>{
-            
+            let div = $("<div></div>");
+            let bookTemplate =$( template("bookAdd",{editdata:""}));
+            bookTemplate.find("input[type=hidden]").remove();
+            div.append(bookTemplate);
+            let dialog = new MarkBox(300,200,"添加",div.get(0));
+            dialog.init();
+            bookTemplate.find("input[type=submit]").click(()=>{
+                $.ajax({
+                    type:"post",
+                    dataType:"json",
+                    url:"/books",
+                    data:bookTemplate.serialize(),
+                    success:(data)=>{
+                        console.log("添加");
+                        if(data.success){
+                            showSuccess("添加成功");
+                        }else{
+                            showFail();
+                        }
+                    }
+                })
+            })
         })    
     }
     let showSuccess  = (msg)=>{

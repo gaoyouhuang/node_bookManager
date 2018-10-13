@@ -40,3 +40,9 @@ footer>a{
     font-size: 20px;
     font-weight: 700;
 }
+#bookAdd .changeForm{
+    background-color: aquamarine;
+    position:  absolute;
+    top: 50%;
+    top:-100px;
+}

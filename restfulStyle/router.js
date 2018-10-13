@@ -13,6 +13,5 @@ router.put("/books/book",service.editfinish);
 //删除
 router.delete("/books/:id",service.todele);
 //添加
-// router.get("/addbook",service.addbook);
-// router.post("/addbookfinish",service.addbookfinish);
+router.post("/books",service.addbook);
 module.exports = router;

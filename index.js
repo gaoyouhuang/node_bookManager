@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const art_template = require("art-template");
 const bodyParser = require("body-parser");
 const router = require("./router.js");
 const app = express();
